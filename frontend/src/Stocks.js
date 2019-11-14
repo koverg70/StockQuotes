@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import gql from 'graphql-tag'
-import { useSubscription } from '@apollo/client';
-import Connected from './Connected';
+import { useSubscription } from '@apollo/client'
+import Connected from './Connected'
 
 const QUOTES_SUBSCRIPTION = gql`
   subscription onStockQuotes($stockCodes: [String!]) {
@@ -12,7 +12,7 @@ const QUOTES_SUBSCRIPTION = gql`
       stockPriceChange
     }
   }
-`;
+`
 
 const Quote = ( { quote: { dateTime, stockCode, stockPrice, stockPriceChange } }) => {
     return (
@@ -33,10 +33,10 @@ const Stocks = () => {
         variables: {  },
         onSubscriptionData: (data) => {
             const q = data.subscriptionData.data.stockQuotes
-            setStockList({...stockList, [q.stockCode]: q})
+            setStockList({ ...stockList, [q.stockCode]: q })
         }
     }
-  );
+  )
   return (
       <Connected>
         { !loading ?
