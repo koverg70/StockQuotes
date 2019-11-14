@@ -1,0 +1,43 @@
+buildscript {
+    repositories {
+        jcenter()
+		mavenCentral()
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$spring_boot_version"
+    }
+}
+
+plugins {
+    id "org.jetbrains.kotlin.jvm" version "1.3.21"
+}
+
+apply plugin: "java-library"
+apply plugin: "org.springframework.boot"
+apply plugin: "io.spring.dependency-management"
+
+sourceCompatibility = 1.8
+
+repositories {
+	jcenter()
+	mavenCentral()
+}
+
+dependencies {
+
+    api "com.graphql-java-kickstart:graphql-spring-boot-starter:$graphql_spring_boot_starter_version"
+    api "com.graphql-java-kickstart:graphql-java-tools:$graphql_java_toos_version"
+    api "com.graphql-java-kickstart:graphql-java-servlet:$graphql_java_servlet_version"
+    api "com.graphql-java:graphql-java-extended-scalars:$graphql_java_extended_scalars_version"
+    runtimeOnly "com.graphql-java:graphiql-spring-boot-starter:$graphiql_spring_boot_starter_version"
+	
+    compile "io.reactivex.rxjava2:rxjava:2.1.5"
+
+    compile("org.springframework.boot:spring-boot-starter-web:$spring_boot_version")
+
+    testCompile "org.springframework.boot:spring-boot-starter-test:$spring_boot_version"
+}
+
+jar.enabled = false
+uploadArchives.enabled = false
+
