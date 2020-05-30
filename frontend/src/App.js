@@ -56,18 +56,18 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 })
 
-client.writeData({ data: { online: false } })
+client.cache.writeData({ data: { online: false } })
 
 subClient.onConnected(() =>
-    client.writeData({ data: { online: true } })
+    client.cache.writeData({ data: { online: true } })
 )
 
 subClient.onReconnected(() =>
-    client.writeData({ data: { online: true } })
+    client.cache.writeData({ data: { online: true } })
 )
 
 subClient.onDisconnected(() =>
-    client.writeData({ data: { online: false } })
+    client.cache.writeData({ data: { online: false } })
 )
 
 function App() {
